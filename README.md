@@ -16,17 +16,16 @@ To install the mod, follow these steps:
 1.  **Install MelonLoader:**
     *   Download the MelonLoader Installer from [LavaGang's GitHub](https://github.com/LavaGang/MelonLoader.Installer/releases).
     *   Run the installer and add the game if MelonLoader detects it, if not: Click on add game manually, and select the `GladiatorManager.exe` file in your game directory.
-    *   Ensure the version is set to the latest stable release and click Install.
+    *  I tested this with 0.7.2, not sure about others. Select the version and click Install.
 
 2.  **Install the mod itself to the game
-    *   Download the latest release from this repository, direct link: xxx.
+    *   Download the latest release from this repository, direct link: https://github.com/druidah/Gladiator-Manager-Access/releases/download/v0.5/Gladiator-Manager-Access.zip
     *   Copy `Tolk.dll` and `nvdaControllerClient64.dll` from the downloaded zip into your main game folder (where `GladiatorManager.exe` is located).
     *   Place the DLL into the `Mods` folder inside your game directory. (Create the folder if it doesn't exist yet, or just run the game with MelonLoader installed once).
 
 3.  **Verify Installation:**
     *   Launch the game. A console window should appear indicating that MelonLoader is starting and the mod is being loaded.
-	* A configuration window shows up after a few seconds, where you can modify screen resolution and other things which I didn't fiddle with. Press play.
-    *   Once the game reaches the main menu, your screen reader should announce "Splash screen screen loaded.".
+	*   Once the game reaches the main menu, your screen reader should announce "Splash screen screen loaded.".
 
 ---
 
