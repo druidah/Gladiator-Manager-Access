@@ -19,7 +19,7 @@ To install the mod, follow these steps:
     *   I tested this with 0.7.2. Select that and click Install.
 
 2.  **Install the mod itself to the game
-    *   Download the latest release from this repository, direct link: https://github.com/druidah/Gladiator-Manager-Access/releases/download/v0.51/Gladiator-Manager-Access.zip.
+    *   Download the latest release from this repository, direct link: https://github.com/druidah/Gladiator-Manager-Access/releases/download/v0.52/Gladiator-Manager-Access.zip.
     *   Copy `Tolk.dll` and `nvdaControllerClient64.dll` from the downloaded zip into your main game folder (where `GladiatorManager.exe` is located).
     *   Place the DLL into the `Mods` folder inside your game directory. (Create the folder if it doesn't exist yet, or just run the game with MelonLoader installed once).
 
