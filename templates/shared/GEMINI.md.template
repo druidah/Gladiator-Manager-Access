@@ -1,0 +1,40 @@
+# Gemini Mandates for [Project Name]
+
+This file defines foundational mandates for Gemini CLI and other agents working in this repository. These instructions take absolute precedence over general defaults.
+
+## User Persona & Communication
+- **User:** Blind, screen reader user.
+- **Output:** NO tables (pipe `|` symbols). Use Markdown lists or headings for structure.
+- **Tone:** Professional, direct, and concise. Senior peer programmer.
+- **Interaction:** Explain intent briefly before tool calls. Update `project_status.md` on significant progress and before session end.
+
+## Environment & Tools
+- **OS:** Windows. ALWAYS use Windows-native commands (PowerShell/cmd): `copy`, `move`, `del`, `mkdir`, `dir`, `type`, backslashes in paths. NEVER use Unix commands (`cp`, `mv`, `rm`, `cat`).
+- **Build/Deploy:** Use `.\scripts\Build-Mod.ps1` and `.\scripts\Deploy-Mod.ps1`.
+- **Search:** Use `grep_search` and `glob` to analyze the `decompiled/` directory.
+
+## Engineering Standards
+- **Source Code First:** NEVER guess class or method names. Always search `decompiled/` and verify against `docs/game-api.md`.
+- **Architecture:** 
+  - Follow the `[Feature]Handler` pattern.
+  - Private fields: `_camelCase`.
+  - XML Documentation: `<summary>` required for all public classes/methods.
+- **Localization:** Mandatory from day one. ALL screen reader strings MUST use `Loc.Get()`.
+- **Principles:**
+  - **Playability:** Aim for the same experience as sighted players. No cheats/shortcuts unless approved.
+  - **Efficiency:** Cache object *references*, but always read *values* live.
+  - **Robustness:** Use `DebugLogger` and `ScreenReader` appropriately.
+
+## Workflows
+1. **Research:** Map systems in `decompiled/`. Document in `docs/game-api.md`.
+2. **Strategy:** Update `project_status.md`.
+3. **Execution:** Plan -> Act -> Validate.
+4. **Completion:** Update `project_status.md`.
+
+## Reference Guides
+- `project_status.md` — Central tracking (READ FIRST).
+- `docs/ACCESSIBILITY_MODDING_GUIDE.md` — Core patterns and rules.
+- `docs/game-api.md` — Discovered game keys, methods, and UI patterns.
+- `docs/localization-guide.md` — Localization implementation.
+- `docs/state-management-guide.md` — Handling multiple handlers.
+- `docs/unity-reflection-guide.md` — Working with private game fields.
