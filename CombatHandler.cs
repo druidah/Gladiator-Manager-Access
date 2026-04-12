@@ -825,16 +825,60 @@ namespace GladiatorManagerAccess
             
             if (string.IsNullOrEmpty(description) || !description.StartsWith(order))
             {
-                description = GetManualDescription(order);
+                description = GetGameTooltipDescription(order);
+
+                if (string.IsNullOrEmpty(description))
+                {
+                    description = GetManualDescription(order);
+                }
             }
             else
             {
                 description = description.Substring(order.Length).Trim();
-                description = Regex.Replace(description, "<.*?>", string.Empty);
-                description = description.Replace("\n", " ");
+                description = NormalizeDescriptionText(description);
             }
 
             ScreenReader.Say($"{order}, {description}.");
+        }
+
+        private string GetGameTooltipDescription(string order)
+        {
+            string originalActionType = DuloGames.UI.UISpellSlot.actionType;
+            bool originalInAColumn = DuloGames.UI.UISpellSlot.inAColumn;
+            string originalHelpDescription = DuloGames.UI.UISpellSlot.helpDescription;
+
+            try
+            {
+                DuloGames.UI.UISpellSlot.actionType = order;
+                DuloGames.UI.UISpellSlot.inAColumn = false;
+                DuloGames.UI.UISpellSlot.helpDescription = string.Empty;
+                DuloGames.UI.UISpellSlot.SetHelpInfo();
+
+                return NormalizeDescriptionText(DuloGames.UI.UISpellSlot.helpDescription);
+            }
+            finally
+            {
+                DuloGames.UI.UISpellSlot.actionType = originalActionType;
+                DuloGames.UI.UISpellSlot.inAColumn = originalInAColumn;
+                DuloGames.UI.UISpellSlot.helpDescription = originalHelpDescription;
+            }
+        }
+
+        private string NormalizeDescriptionText(string description)
+        {
+            if (string.IsNullOrEmpty(description))
+            {
+                return string.Empty;
+            }
+
+            description = Regex.Replace(description, "<.*?>", string.Empty);
+            description = description.Replace("\r\n", "\n");
+            description = description.Replace("\n\n", ". ");
+            description = description.Replace("\n", " ");
+            description = Regex.Replace(description, "\\s+", " ").Trim();
+            description = description.Replace(" .", ".").Replace("..", ".");
+
+            return description;
         }
 
         private string GetManualDescription(string order)
